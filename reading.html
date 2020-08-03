@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title></title> <!--   The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- 
+        SUMARY
+
+        EMAILBACKGROUND
+        EMAILWIDTH
+    -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Tells the email client that only light styles are provided but the client can transform them to dark. A duplicate of meta color-scheme meta tag above. */
+        :root {
+          color-scheme: light;
+          supported-color-schemes: light;
+        }
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+	    /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td-primary:hover,
+        .button-a-primary:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+
+            /* What it does: Adjust typography on small screens to improve readability */
+            .email-container p {
+                font-size: 17px !important;
+            }
+
+        }
+
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+    <!-- Custom CSS : BEGIN -->
+    <style>
+        /* What it does: your custom template */
+
+        .email-outer-container {
+            border: 1px solid #E0E0E0;
+            padding: 40px;
+        }
+
+        .email-content-body {
+            border: 1px solid #E0E0E0;
+            background-color: #FFFFFF;
+        }
+
+        .email-content-body a {
+            color: #438AFF;
+            text-decoration: underline;
+        }
+
+        .email-content-footer {
+            border: 1px solid #E0E0E0;
+            border-top: 0;
+            background-color: #ECFFF9;
+        }
+
+        .email-content-header h1 { font-weight: bold; font-size: 28px; line-height: 36px; color: #0F1512; }
+        .email-content-header h2 { font-weight: bold; font-size: 24px; line-height: 24px; color: #0F1512; }
+        .email-content-header h3 { font-weight: bold; font-size: 20px; line-height: 24px; color: #0F1512; }
+
+        .email-content-button { display: inline-block; padding: 12px 18px; background: #04A274; color: white; font-size: 14px; letter-spacing: 0; line-height: 24px; border-radius: 24px; }
+        .email-content-button:hover { background: rgb(6, 105, 77) !important; }
+
+        @media screen and (max-width: 600px) {
+            .email-container-header { padding: 20px 16px 16px !important; }
+            .email-content-header { padding: 12px 16px 0 !important; }
+            .email-content-header h1 { font-size: 22px !important; line-height: 26px !important; }
+            .email-content-header h2 { font-size: 20px !important; line-height: 24px !important; }
+            .email-content-header h3 { font-size: 18px !important; line-height: 20px !important; }
+            .email-outer-container { margin: 8px auto !important; padding: 8px !important; }
+            .email-content-paragrath { padding: 12px 16px !important; }
+            .email-content-quote { padding: 12px 16px !important; }
+            .email-content-list { padding: 12px 16px !important; }
+            .email-content-hero { padding:20px 0px 8px !important; }
+            .email-content-image { padding:20px 0px 8px !important; }
+            .email-content-caption { padding:0 16px 16px !important; }
+        }
+
+        .pingback-image-button {
+            display: inline-block;
+            border-radius: 10px;
+            padding: 10px 18px;
+            background-color: #2A2E32;
+            text-decoration: none !important;
+        }
+        .pingback-image-button img {
+            max-height: 23px; /* se puder já importa a imagem em no max 23px */
+            float: left;
+            margin: 0;
+        }
+        .pingback-image-button span {
+            line-height: 23px;
+            white-space: nowrap;
+            margin-left: 5px;
+            margin-left: 5px;
+            color: #FFFFFF
+        }
+
+        .pingback-image-button + .pingback-image-button { margin-left: 16px; }
+
+        .pingback-image-button.disabled { background-color: #DCDFE1; pointer-events: none; }
+        .pingback-image-button.disabled span { color: #A8A8A8; }
+
+        .email-content-quote td,
+        .email-container-header,
+        .email-content-caption,
+        .email-content-paragrath,
+        .email-content-list ul li {
+            font-family: Open Sans, arial !important;
+        }
+    </style>
+    <!-- Custom CSS : BEGIN -->
+
+</head>
+<!--
+	The email background [EMAILBACKGROUND] color (#ffffff) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail
+-->
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #ffffff;">
+	<center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color: #ffffff;">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #ffffff;">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="max-height:0; overflow:hidden; mso-hide:all;" aria-hidden="true">
+            (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this text is not included, email clients will automatically populate it using the text (including image alt text) at the start of the email's body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+            &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!--
+            Set the email width [EMAILWIDTH]. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 806px.
+            2. MSO tags for Desktop Windows Outlook enforce a 806px width.
+
+            Nota do Dev: 806 pois o protótipo apresenta 886 e para email não existe box-sizing (40px de padding)
+        -->
+        <div style="max-width: 806px; margin: 40px auto;" class="email-container email-outer-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="806">
+            <tr>
+            <td>
+            <![endif]-->
+
+            <!-- Email Body : BEGIN -->
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;" class="email-content-body">
+
+                <!-- Email Header : BEGIN -->
+                <tr>
+                    <td class="email-container-header" style="padding: 60px 80px 24px; text-align: left; font-family: sans-serif; font-weight: bold; font-size: 14px; line-height: 24px; color: #68746E;">
+                        By Design Weekly  • Issue #32
+                    </td>
+                </tr>
+                <!-- Email Header : END -->
+
+                <!-- Content Header : BEGIN -->
+                <tr>
+                    <td class="email-content-header" style="padding: 12px 80px 0; text-align: left;">
+                        <h1 style="margin: 0;">O Primeiro passo é ter calma!</h1>
+                        <h2 style="margin: 0;">O Primeiro passo é ter calma!</h2>
+                        <h3 style="margin: 0;">O Primeiro passo é ter calma!</h3>
+                    </td>
+                </tr>
+                <!-- Content Header : END -->
+
+                <!-- Content Hero : BEGIN -->
+                <tr>
+                    <td class="email-content-hero" style="background-color:#FFFFFF;padding:40px 40px 12px">
+                        <img src="https://via.placeholder.com/1200x600" width="805" height="" alt="alt_text" border="0"
+                            style="width:100%;max-width:805px;height:auto;background:#dddddd;font-family:sans-serif;font-size:15px;line-height:15px;color:#555555;margin:auto;display:block">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="email-content-caption"
+                        style="padding:0 80px 28px;text-align:left;font-family:Arial;font-weight:regular;font-size:12px;line-height:16px;color:#45524c">
+                        caption <strong><em>se não tiver caption, deixa essa tr toda :)</em></strong>
+                    </td>
+                </tr>
+                <!-- Content Hero : END -->
+                
+                <!-- Content Image : BEGIN -->
+                <tr>
+                    <td class="email-content-image" style="background-color:#FFFFFF;padding:40px 40px 12px">
+                        <img src="https://via.placeholder.com/200x100" alt="alt_text" border="0"
+                            style="max-width:805px;height:auto;background:#dddddd;font-family:sans-serif;font-size:15px;line-height:15px;color:#555555;margin:auto;display:block">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="email-content-caption"
+                        style="padding:0 80px 28px;text-align:left;font-family:Arial;font-weight:regular;font-size:12px;line-height:16px;color:#45524c">
+                        caption <strong><em>se não tiver caption, deixa essa tr toda :)</em></strong>
+                    </td>
+                </tr>
+                <!-- Content Image : END -->
+
+                <!-- Content Paragrath : BEGIN -->
+                <tr>
+                    <td class="email-content-paragrath" style="padding: 12px 80px; text-align: left; font-family: Arial; font-weight: regular; font-size: 16px; line-height: 26px; color: #202B26;">
+                        Sabemos que a <a href="https://google.com" target="_blank">crise</a> vai apertar, estamos só no começo dela. Será prudente arrumar outro emprego que paga mais? Será que
+                        eu devo demitir meus desenvolvedores para diminuir custos?
+                    </td>
+                </tr>
+                <!-- Content Paragrath : END -->
+
+                <!-- Content Paragrath : BEGIN -->
+                <tr>
+                    <td class="email-content-paragrath" style="padding: 12px 80px; text-align: left; font-family: Arial; font-weight: regular; font-size: 16px; line-height: 26px; color: #202B26;">
+                        Sabemos que a <a href="https://google.com" target="_blank">crise</a> vai apertar, estamos só no começo dela. Será prudente arrumar outro emprego que paga mais? Será que
+                        eu devo demitir meus desenvolvedores para diminuir custos?
+                    </td>
+                </tr>
+                <!-- Content Paragrath : END -->
+
+                <!-- Content Quote : BEGIN -->
+                <tr>
+                    <td class="email-content-quote" style="padding: 12px 80px; background-color: #FFFFFF;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="border-left: 4px solid #D3D8D6; padding-left: 20px; font-family: sans-serif; font-style: italic; font-size: 18px; line-height: 26px; color: #68746E;">
+                                    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil natus nam quam velit, vel praesentium architecto saepe harum! Iure, voluptatibus?"
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: 4px solid #FFFFFF; padding: 12px 20px; font-family: sans-serif; font-size: 14px; line-height: 16px; color: #45524C;">
+                                    COOPER, Alan - About Face, Volume 3 - 2014
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- Content Quote : END -->
+
+                <!-- Content List : BEGIN -->
+                <tr>
+                    <td class="email-content-list" style="padding: 12px 80px; text-align: left; font-family: Arial; font-weight: regular; font-size: 16px; line-height: 26px; color: #202B26;">
+                        <ul style="padding: 0; margin: 0 0 10px 0; list-style-type: disc;">
+                            <li style="margin:0 0 12px 20px;" class="list-item-first">Redistribuição do trabalho entre o time restante.</li>
+                            <li style="margin:0 0 12px 20px;">Redistribuição do conhecimento sobre aquele trabalho especifico, sem a peça que detém o conhecimento.</li>
+                            <li style="margin:0 0 12px 20px;">Redistribuição do conhecimento sobre aquele trabalho especifico, sem a peça que detém o conhecimento.</li>
+                            <li style="margin:0 0 12px 20px;">Redistribuição do conhecimento sobre aquele trabalho especifico, sem a peça que detém o conhecimento.</li>
+                            <li style="margin:0 0 12px 20px;">Redistribuição do conhecimento sobre aquele trabalho especifico, sem a peça que detém o conhecimento.</li>
+                            <li style="margin: 0 0 0 20px;" class="list-item-last">Adaptação do planejamento e da estratégia de <a href="#">execução do produto</a>.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <!-- Content List : END -->
+
+                <!-- Content Be a Member : BEGIN -->
+                <tr>
+                    <td align="right" style="padding: 12px 80px; background-color: #FFFFFF;">
+                        <a href="#" class="pingback-image-button disabled">
+                            <img src="http://placehold.it/26x23" alt="">
+                            <span style="line-height: 23px; white-space: nowrap;">Você já é membro</span>
+                        </a>
+                    </td>
+                </tr>
+                <!-- Content Be a Member : END -->
+
+                <!-- Content Contribute : BEGIN -->
+                <tr>
+                    <td align="center" style="padding: 50px 12px 36px; background-color: #FCFCFC;">
+                        <a href="#" class="pingback-image-button">
+                            <img src="http://placehold.it/26x23" alt="">
+                            <span style="line-height: 23px; white-space: nowrap;">Deixe seu Ping</span>
+                        </a>
+                        <a href="#" class="pingback-image-button">
+                            <img src="http://placehold.it/26x23" alt="">
+                            <span style="line-height: 23px; white-space: nowrap;">Deixe seu Pingback</span>
+                        </a>
+                        <a href="#" class="pingback-image-button">
+                            <img src="http://placehold.it/26x23" alt="">
+                            <span style="line-height: 23px; white-space: nowrap;">Torne-se membro</span>
+                        </a>
+                        <p style="font-size: 12px; color: #68746E; line-height: 17px; margin-top: 24px;">
+                            Contribua com a 
+                            <strong>NOTUNICORN.</strong>
+                            Deixe um Ping, um Pingback ou torne-se membro.</p>
+                    </td>
+                </tr>
+                <!-- Content Contribute : END -->
+
+                <!-- Clear Spacer : BEGIN -->
+                <tr>
+                    <td aria-hidden="true" height="40" style="font-size: 0px; line-height: 0px;">
+                        &nbsp;
+                    </td>
+                </tr>
+                <!-- Clear Spacer : END -->
+
+
+
+            </table>
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : BEGIN -->
+            <table class="email-content-footer" align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+                <tr>
+                    <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #888888;">
+                        <br><br>
+                        © 2020 Pingback, Inc. Unsubscribe<br>
+                        <span class="unstyle-auto-detected-links">2035 Sunset Lake Rd State B2, Newark, DE, 19702</span>
+                        <br><br><br>
+                        <a href="#" class="button-a-primary email-content-button">Publish with Pingback</a>
+                        <br><br>
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Footer : END -->
+
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
+
+
+<!-- NOVIDADES DO EMAIL -->
+<!-- existe uma classe nova chamada .pingback-image-button -->
+<!-- existe um btn novo que usa a classe pingback-image-button -->
+<!-- vamos tentar forçar webfont dessa vez, da uma olhada no header entre as linhas 45 e 50 -->
+<!-- com isso, adicionamos classes para tentar forçar esse webfont abaixo das classes dos botoes -->
